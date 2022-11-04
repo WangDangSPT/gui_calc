@@ -1,4 +1,4 @@
-# GUI_Calc
+# PY_GUI_Calc
 
 This is a GUI Calculator app written in python
 
