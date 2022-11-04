@@ -26,7 +26,7 @@ python -m pip install pyqt5
 * **studyingrabbit** - *Initial work* - [studyingrabbit](https://studyingrabbit.tistory.com/23)
 * **Elkana** - *Repo Initiator* - this repo
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [CONTRIBUTING.md](https://github.com/WangDangSPT/gui_calc/blob/main/CONTRIBUTING.md) who participated in this project.
 
 ## License
 
