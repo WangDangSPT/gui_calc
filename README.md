@@ -24,7 +24,7 @@ python -m pip install pyqt5
 ## Authors
 
 * **studyingrabbit** - *Initial work* - [studyingrabbit](https://studyingrabbit.tistory.com/23)
-* * **Elkana** - *Repo Initiator* - this repo
+* **Elkana** - *Repo Initiator* - this repo
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
