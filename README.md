@@ -1,6 +1,6 @@
 # PY_GUI_Calc
 
-## This is a GUI Calculator app written in python
+### This is a GUI Calculator app written in python
 ![alt text](https://github.com/WangDangSPT/py_gui_calc/blob/main/static/calc.png)
 
 ## Getting Started
