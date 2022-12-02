@@ -27,12 +27,19 @@ class Main(QDialog):
         button_minus = QPushButton("-")
         button_product = QPushButton("x")
         button_division = QPushButton("/")
+        button_square = QPushButton('1/x')
+        button_root = QPushButton('x^2')
+        button_remainder = QPushButton('%')
 
         ### 사칙연산 버튼을 클릭했을 때, 각 사칙연산 부호가 수식창에 추가될 수 있도록 시그널 설정
         button_plus.clicked.connect(lambda state, operation = "+": self.button_operation_clicked(operation))
         button_minus.clicked.connect(lambda state, operation = "-": self.button_operation_clicked(operation))
         button_product.clicked.connect(lambda state, operation = "*": self.button_operation_clicked(operation))
         button_division.clicked.connect(lambda state, operation = "/": self.button_operation_clicked(operation))
+        button_remainder.clicked.connect(lambda state, operation = '%': self.button_operation_clicked(operation))
+        button_square.clicked.connect(lambda state, operation = '/': self.button_operation_clicked(operation))
+        button_root.clicked.connect(lambda state, operation = '/': self.button_operation_clicked(operation))
+        
 
         ### 사칙연산 버튼을 layout_operation 레이아웃에 추가
         layout_operation.addWidget(button_plus)
@@ -42,12 +49,14 @@ class Main(QDialog):
 
         ### =, clear, backspace 버튼 생성
         button_equal = QPushButton("=")
-        button_clear = QPushButton("Clear")
+        button_clear = QPushButton("C")
+        button_clear_all = QPushButton('CE')
         button_backspace = QPushButton("Backspace")
 
         ### =, clear, backspace 버튼 클릭 시 시그널 설정
         button_equal.clicked.connect(self.button_equal_clicked)
         button_clear.clicked.connect(self.button_clear_clicked)
+        button_clear_all.clicked.connect(self.button_clear_all_clicked)
         button_backspace.clicked.connect(self.button_backspace_clicked)
 
         ### =, clear, backspace 버튼을 layout_clear_equal 레이아웃에 추가
@@ -107,6 +116,9 @@ class Main(QDialog):
     def button_clear_clicked(self):
         self.equation.setText("")
         self.solution.setText("")
+
+    def button_clear_all_clicked(self):
+        self.solution.setText('')
 
     def button_backspace_clicked(self):
         equation = self.equation.text()
