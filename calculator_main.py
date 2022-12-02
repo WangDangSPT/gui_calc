@@ -162,8 +162,10 @@ class Main(QDialog):
         self.inputField.setText('')
 
     def button_clear_entry_clicked(self):
-        self.valuebuffer.pop()
         self.inputField.setText('')
+        # very first input 
+        if len(self.valuebuffer) > 0:
+            self.valuebuffer.pop()
 
     def button_backspace_clicked(self):
         equation = self.equation.text()
