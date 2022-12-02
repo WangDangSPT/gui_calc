@@ -20,8 +20,7 @@ class Main(QDialog):
         self.solution = QLineEdit("")
 
         ### layout_equation_solution 레이아웃에 수식, 답 위젯을 추가
-        layout_equation_solution.addRow(label_equation, self.equation)
-        layout_equation_solution.addRow(label_solution, self.solution)
+        layout_equation_solution.addRow(self.solution)
 
         ### 사칙연상 버튼 생성
         button_plus = QPushButton("+")
