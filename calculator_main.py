@@ -109,9 +109,10 @@ class Main(QDialog):
         equation = self.inputField.text()
         equation += str(num)
         self.inputField.setText(equation)
-        self.valuebuffer.append(equation)
+        
 
     def button_operation_clicked(self, operation):
+        self.valuebuffer = self.inputField.text()
         if operation == '+':
             self.operaitonbuffer.append('+')
             self.inputField.setText('')
