@@ -15,7 +15,6 @@ class Main(QDialog):
         layout_equation_solution = QFormLayout()
 
         ### 수식 입력과 답 출력을 위한 LineEdit 위젯 생성
-        self.equation = QLineEdit("")
         self.solution = QLineEdit("")
 
         ### layout_equation_solution 레이아웃에 수식, 답 위젯을 추가
@@ -37,8 +36,9 @@ class Main(QDialog):
         button_product.clicked.connect(lambda state, operation = "*": self.button_operation_clicked(operation))
         button_division.clicked.connect(lambda state, operation = "/": self.button_operation_clicked(operation))
         button_remainder.clicked.connect(lambda state, operation = '%': self.button_operation_clicked(operation))
-        button_square.clicked.connect(lambda state, operation = '/': self.button_operation_clicked(operation))
-        button_root.clicked.connect(lambda state, operation = '/': self.button_operation_clicked(operation))
+        button_square.clicked.connect(lambda state, operation = 'square': self.button_operation_clicked(operation))
+        button_root.clicked.connect(lambda state, operation = 'root': self.button_operation_clicked(operation))
+        button_reciprocal.clicked.connect(lambda state, operation = '1/x': self.button_operation_clicked(operation))
         
 
         ### 사칙연산 버튼을 layout_operation 레이아웃에 추가
@@ -102,9 +102,9 @@ class Main(QDialog):
     ### functions ###
     #################
     def number_button_clicked(self, num):
-        equation = self.equation.text()
+        equation = self.solution.text()
         equation += str(num)
-        self.equation.setText(equation)
+        self.solution.setText(equation)
 
     def button_operation_clicked(self, operation):
         equation = self.equation.text()
