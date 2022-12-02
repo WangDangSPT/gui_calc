@@ -8,6 +8,10 @@ class Main(QDialog):
 
     def init_ui(self):
         main_layout = QVBoxLayout()
+        ### Memory Buffers for evaulating equation 
+        self.valuebuffer = []
+        self.operaitonbuffer = [] 
+
 
         ### 각 위젯을 배치할 레이아웃을 미리 만들어 둠
         layout_operation = QGridLayout()
@@ -15,10 +19,10 @@ class Main(QDialog):
         layout_equation_solution = QFormLayout()
 
         ### 수식 입력과 답 출력을 위한 LineEdit 위젯 생성
-        self.solution = QLineEdit("")
+        self.inputField = QLineEdit("")
 
         ### layout_equation_solution 레이아웃에 수식, 답 위젯을 추가
-        layout_equation_solution.addRow(self.solution)
+        layout_equation_solution.addRow(self.inputField)
 
         ### 사칙연상 버튼 생성
         button_plus = QPushButton("+")
@@ -102,26 +106,46 @@ class Main(QDialog):
     ### functions ###
     #################
     def number_button_clicked(self, num):
-        equation = self.solution.text()
+        equation = self.inputField.text()
         equation += str(num)
-        self.solution.setText(equation)
+        self.inputField.setText(equation)
+        self.valuebuffer.append(equation)
 
     def button_operation_clicked(self, operation):
-        equation = self.equation.text()
-        equation += operation
-        self.equation.setText(equation)
+        if operation == '+':
+            self.operaitonbuffer.append('+')
+            self.inputField.setText('')
+        elif operation == '-':
+            self.operaitonbuffer.append('-')
+            self.inputField.setText('')
+        elif operation == '/':
+            self.operaitonbuffer.append('/')
+            self.inputField.setText('')
+        elif operation == '*':
+            self.operaitonbuffer.append('*')
+            self.inputField.setText('')
 
     def button_equal_clicked(self):
-        equation = self.equation.text()
-        solution = eval(equation)
-        self.solution.setText(str(solution))
-
+        res = int(self.valuebuffer.pop(0))
+        for x in self.operaitonbuffer:
+            opr = self.operaitonbuffer.pop(0)
+            if opr == '+':
+                res = res + int(self.valuebuffer.pop(0))
+            elif opr == '-':
+                res = res - int(self.valuebuffer.pop(0))
+            elif opr == '/':
+                res = res / int(self.valuebuffer.pop(0))
+            elif opr =='*': 
+                res = res * int(self.valuebuffer.pop(0))
+        self.inputField.setText(str(res))
+        self.valuebuffer.append(res)
+        
     def button_clear_clicked(self):
         self.equation.setText("")
-        self.solution.setText("")
+        self.inputField.setText("")
 
     def button_clear_entry_clicked(self):
-        self.solution.setText('')
+        self.inputField.setText('')
 
     def button_backspace_clicked(self):
         equation = self.equation.text()
