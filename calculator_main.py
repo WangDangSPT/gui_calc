@@ -10,8 +10,8 @@ class Main(QDialog):
         main_layout = QVBoxLayout()
 
         ### 각 위젯을 배치할 레이아웃을 미리 만들어 둠
-        layout_operation = QHBoxLayout()
         layout_clear_equal = QHBoxLayout()
+        layout_operation = QHBoxLayout()
         layout_number = QGridLayout()
         layout_equation_solution = QFormLayout()
 
@@ -82,14 +82,12 @@ class Main(QDialog):
         button_dot.clicked.connect(lambda state, num = ".": self.number_button_clicked(num))
         layout_number.addWidget(button_dot, 3, 2)
 
-        button_double_zero = QPushButton("00")
-        button_double_zero.clicked.connect(lambda state, num = "00": self.number_button_clicked(num))
-        layout_number.addWidget(button_double_zero, 3, 0)
+        
 
         ### 각 레이아웃을 main_layout 레이아웃에 추가
         main_layout.addLayout(layout_equation_solution)
-        main_layout.addLayout(layout_operation)
         main_layout.addLayout(layout_clear_equal)
+        main_layout.addLayout(layout_operation)
         main_layout.addLayout(layout_number)
 
         self.setLayout(main_layout)
