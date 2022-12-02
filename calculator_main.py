@@ -10,7 +10,7 @@ class Main(QDialog):
         main_layout = QVBoxLayout()
         ### Memory Buffers for evaulating equation 
         self.valuebuffer = []
-        self.operaitonbuffer = [] 
+        self.operaitonbuffer = []
 
 
         ### 각 위젯을 배치할 레이아웃을 미리 만들어 둠
@@ -40,7 +40,7 @@ class Main(QDialog):
         button_product.clicked.connect(lambda state, operation = "*": self.button_operation_clicked(operation))
         button_division.clicked.connect(lambda state, operation = "/": self.button_operation_clicked(operation))
         button_remainder.clicked.connect(lambda state, operation = '%': self.button_operation_clicked(operation))
-        button_square.clicked.connect(lambda state, operation = 'square': self.button_operation_clicked(operation))
+        button_square.clicked.connect(lambda state, operation = '**': self.button_operation_clicked(operation))
         button_root.clicked.connect(lambda state, operation = 'root': self.button_operation_clicked(operation))
         button_reciprocal.clicked.connect(lambda state, operation = '1/x': self.button_operation_clicked(operation))
         
@@ -124,6 +124,15 @@ class Main(QDialog):
         elif operation == '*':
             self.operaitonbuffer.append('*')
             self.inputField.setText('')
+        elif operation == '1/x':
+            self.operaitonbuffer.append('1/x')
+            self.inputField.setText('')
+        elif operation == '**':
+            self.operaitonbuffer.append('**')
+            self.inputField.setText('')
+        elif operation == 'root':
+            self.operaitonbuffer.append('root')
+            self.inputField.setText('')
 
     def button_equal_clicked(self):
         res = int(self.valuebuffer.pop(0))
@@ -137,9 +146,15 @@ class Main(QDialog):
                 res = res / int(self.valuebuffer.pop(0))
             elif opr =='*': 
                 res = res * int(self.valuebuffer.pop(0))
+            elif opr =='1/x':
+                res = 1 / res
+            elif opr == '**':
+                res = res ** 2
+            elif opr == 'root':
+                res = res ** 0.5
         self.inputField.setText(str(res))
         self.valuebuffer.append(res)
-        
+
     def button_clear_clicked(self):
         self.equation.setText("")
         self.inputField.setText("")
