@@ -157,10 +157,12 @@ class Main(QDialog):
         self.valuebuffer.append(res)
 
     def button_clear_clicked(self):
-        self.equation.setText("")
-        self.inputField.setText("")
+        self.operaitonbuffer.clear()
+        self.valuebuffer.clear()
+        self.inputField.setText('')
 
     def button_clear_entry_clicked(self):
+        self.valuebuffer.pop()
         self.inputField.setText('')
 
     def button_backspace_clicked(self):
